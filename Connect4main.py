@@ -1,161 +1,5 @@
 
-#import numpy as np # For numerical fast numerical calculations
-#import matplotlib.pyplot as plt # For making plots
-#import pandas as pd # Deals with data
-#import seaborn as sns # Makes beautiful plots
-#from sklearn.preprocessing import StandardScaler # Testing sklearn
-#import tensorflow # Imports tensorflow
-#import keras # Imports keras
 
-
-
-
-
-
-
-
-
-#print("hello")
-'''
- rowPos = currentPos[0]
-        columnPos = currentPos[1]
-        val = self.board[rowPos][columnPos]
-      #  print(val)
-       
-     
-        horizontalScore = 0
-        rightDiagonalScore = 0
-        leftDiagonalScore = 0
-    #move down a column to count
-        if winnerFound == False:
-
-            r = rowPos
-            c = columnPos
-            while(r < numRows):
-              #  print("in first loop")
-                #print(r)
-                if self.board[r][c] == val:
-                   # print("row increase")
-                    verticalScore += 1
-                    if verticalScore == gameObjective:
-                        winnerFound = True
-                        winnerVal = val
-                        break
-                else:
-                    #print("in exit")
-                    break
-                r +=1
-                
-#move up a column to count
-     #   if winnerFound == False:
-      #      r = rowPos
-       #     c = columnPos
-        #    while(r >= 0):
-              
-         #       if self.board[r][c] == val:
-           #         verticalScore += 1
-          #      if verticalScore == gameObjective:
-            #        winnerFound = True
-             #       winnerVal = val
-              #      break
-               # else:
-                #    break
-                #r = r-1       
-#move right in a row to count
-        if winnerFound == False:
-            r = rowPos
-            c = columnPos
-            while(c < numColumns):
-              
-                if self.board[r][c] == val:
-                    horizontalScore += 1
-                    if horizontalScore == gameObjective:
-                        winnerFound = True
-                        winnerVal = val
-                        break
-                else:
-                    break
-                c = c + 1
-#move left in a row to count
-        if winnerFound == False:
-            r = rowPos
-            c = columnPos
-            while(c >= 0):
-              
-                if self.board[r][c] == val:
-                    horizontalScore += 1
-                    if horizontalScore == gameObjective:
-                        winnerFound = True
-                        winnerVal = val
-                        break
-                else:
-                    break
-                c = c-1  
-#move right then up to count
-        if winnerFound == False:
-            r = rowPos
-            c = columnPos
-            while(r >= 0 and c < numColumns):
-              
-                if self.board[r][c] == val:
-                    rightDiagonalScore += 1
-                    if rightDiagonalScore == gameObjective:
-                        winnerFound = True
-                        winnerVal = val
-                        break
-                else:
-                    break
-                r = r-1
-                c = c+1   
-#move left then down to count
-        if winnerFound == False:
-            r = rowPos
-            c = columnPos
-            while(r < numRows and c >= 0):
-              
-                if self.board[r][c] == val:
-                    rightDiagonalScore += 1
-                    if rightDiagonalScore == gameObjective:
-                        winnerFound = True
-                        winnerVal = val
-                        break
-                else:
-                    break
-                r = r+1
-                c = c-1
-#move left then up to count
-        if winnerFound == False:
-            r = rowPos
-            c = columnPos
-            while(r >= 0 and c >= 0):
-              
-                if self.board[r][c] == val:
-                    leftDiagonalScore += 1
-                    if leftDiagonalScore == gameObjective:
-                        winnerFound = True
-                        winnerVal = val
-                        break
-                else:
-                    break
-                r = r-1
-                c = c-1 
-#move right then down to count  
-        if winnerFound == False:
-            r = rowPos
-            c = columnPos
-            while(r < numRows and c < numColumns):
-              
-                if self.board[r][c] == val:
-                    leftDiagonalScore += 1
-                    if leftDiagonalScore == gameObjective:
-                        winnerFound = True
-                        winnerVal = val
-                        break
-                else:
-                    break
-                r = r+1
-                c = c+1 
-                '''
 from Board import Board
 from Player import  Player
 from Controller import GameController
@@ -201,7 +45,7 @@ redBot = Player(redVal, strategy='model', model=model)
 yellow = Player(yellowVal, strategy='picked')
 myController = GameController(board, redBot, yellow)
 playerToMove = redBot
-#gameOver = False
+
 while True:
     for event in pygame.event.get():
        if event.type == pygame.QUIT:
@@ -215,18 +59,17 @@ while True:
     
         legalMoves = board.getLegalMoves()
         move = playerToMove.getMove(legalMoves, board.getBoard(), myGui)
-    # while move== None:
-        #    move = playerToMove.getMove(legalMoves, board.getBoard(), myGui)
+  
         print(move)
         board.move(move, playerToMove.getPlayer())
         print("past move")
         myGui.draw()
-        #pygame.display.update()
+
         if playerToMove == redBot:
             playerToMove = yellow
         else:
             playerToMove = redBot
-        #pygame.display.update()
+    
         #new added code begins to check for winner or draw
     
     if board.findState() == redVal:
@@ -236,14 +79,14 @@ while True:
         
         playerToMove = redBot
         
-        #gameOver = True
+      
         print("red wins")
     elif board.findState() == yellowVal:
         note = myGui.yellowWins()
         myGui.screen.blit(note[0], note[1])
         myGui.gameOver()
       
-        #gameOver = True
+        
         print("yellow wins")
     elif board.findState() == tie:
         note = myGui.tie()
@@ -251,41 +94,25 @@ while True:
         myGui.gameOver()
         playerToMove = redBot
        
-        #gameOver = True
+       
         print("draw")
     
-    #if gameOver == True:
-     #   print('in end decide')
+ 
         
         
     
 
     pygame.display.update()
-        #pygame.display.update()
-
+       
 
 
     
-    #pygame.display.update()
-    
-
-
-   
-    #myController.play(myGui)
-
-
-
-   # myController.play(myGui)
   
-       # myGui.mouseAction()
-       # pygame.display.update()
-    #pixAr = pygame.PixelArray(gameDisplay)
-    #pixAr[10][20] = red
 
     
 
 
-#script to train neural net
+#script to test neural net
 '''
 if __name__ == "__main__":
     game1 = Board()
