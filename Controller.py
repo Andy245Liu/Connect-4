@@ -16,8 +16,7 @@ class GameController:
         while self.game.findState() == gameStateNotEnded:
             legalMoves = self.game.getLegalMoves()
             move = playerToMove.getMove(legalMoves, self.game.getBoard(), gui)
-           # while move== None:
-           #     move = playerToMove.getMove(legalMoves, self.game.getBoard(), gui)
+          
             print(move)
             self.game.move(move, playerToMove.getPlayer())
             print("past move")
@@ -68,19 +67,19 @@ class GameController:
             elif self.game.findState() == yellowVal:
                 yellowPlayerWins = yellowPlayerWins + 1
             else:
-                #print("a draw!")
+               
                 draws = draws + 1
             totWins = redPlayerWins + yellowPlayerWins + draws
         print('Red Wins: ' + str(int(redPlayerWins * 100 / totWins)) + '%')
         print('Yellow Wins: ' + str(int(yellowPlayerWins * 100 / totWins)) + '%')
         print('Draws: ' + str(int(draws * 100 / totWins)) + '%') 
-        #print(draws)
+       
     
     def getTrainingHistory(self):
         return self.trainingHistory
     
 
-#print("Controller Check")
+
 
 
         
