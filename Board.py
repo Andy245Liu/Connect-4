@@ -5,12 +5,12 @@ redVal = -1
 yellowVal = 1
 empty = ' '
 EMPTY_VAL = 0
-horizontalSeparator = '|'
+
 gameStateX = -1
 gameStateO = 1
 gameStateDraw = 0
 gameStateNotEnded = 2
-verticalSeparator = '_'
+
 numRows = 6
 numColumns = 7
 gameObjective = 4
@@ -44,62 +44,7 @@ class Board:
                         legalMoves.append([j,i])
         return legalMoves
     def findState(self):
-        '''winnerFound = False
-        currentWinner = None
-        # Find winner on horizontal
-        for i in range(numRows):
-            if not winnerFound:
-                for j in range(numColumns - gameObjective - 1):
-                    if self.board[i][j] != 0 and self.board[i][j] == self.board[i][j+1] and self.board[i][j] == self.board[i][j + 2] and \
-                            self.board[i][j] == self.board[i][j + 3]:
-                        currentWinner = self.board[i][j]
-                        winnerFound = True
-
-        # Find winner on vertical
-        if not winnerFound:
-            for j in range(numColumns):
-                if not winnerFound:
-                    for i in range(numRows - gameObjective - 1):
-                        if self.board[i][j] != 0 and self.board[i][j] == self.board[i+1][j] and self.board[i][j] == self.board[i+2][j] and \
-                                self.board[i][j] == self.board[i+3][j]:
-                            currentWinner = self.board[i][j]
-                            winnerFound = True
-
-        # Check lower left diagonals
-        if not winnerFound:
-            for i in range(numRows - gameObjective - 1):
-               j = 0
-               while j <= i:
-                   if self.board[i][j] != 0 and self.board[i][i] == self.board[i + 1][j + 1] and self.board[i][i] == self.board[i + 2][j + 2] and \
-                           self.board[i][i] == self.board[i + 3][j + 3]:
-                       currentWinner = self.board[i][j]
-                       winnerFound = True
-                   j = j+1
-
-        # Check upper right diagonals
-        if not winnerFound:
-            for j in range(numColumns - gameObjective - 1):
-                i = j
-                while i<= numRows - gameObjective - 1:
-                    if self.board[i][j] != 0 and self.board[i][i] == self.board[i + 1][j + 1] and self.board[i][i] == self.board[i + 2][j + 2] and \
-                            self.board[i][i] == self.board[i + 3][j + 3]:
-                        currentWinner = self.board[i][j]
-                        winnerFound = True
-                    i = i+1
-
-        if winnerFound: return currentWinner
-        else:
-            drawFound = True
-            # Check for draw
-            for i in range(len(self.board)):
-                for j in range(len(self.board[i])):
-                    if self.board[i][j] == EMPTY_VAL:
-                        drawFound = False
-            if drawFound:
-                #print("in draw")
-                return gameStateDraw
-            else:
-                return gameStateNotEnded'''
+       
     
         winnerFound = False
         winnerVal = 0
@@ -244,22 +189,3 @@ class Board:
         return self.board
 
 
-#myB = Board() 
-#myB.board =    [[0, 0, 0, 0, 0, 0, 0],
-  #[0, 0, 0, 0, 0, 0, 0],
-  #[0, 0, 0, -1, 0, 0, 0],
-  #[0, 0, -1, 1, 0, 0, 0],
-  #[0, -1, -1, 1, 0, 0, 0],
-  #[-1, 1, 1, -1, 1, 0, 0]
- #]
-#myB.board = [[1, -1, 1,-1,1,-1,1],[1,-1,1,1,1,-1,1],[-1,1,-1,-1,-1,1,-1],[1,-1,1,1,1,-1,1],[-1,1,-1,-1,-1,1,-1],[-1,1,-1,1,-1,1,-1]]
-
-#myB.board[0][0] = 1
-#myB.board[1][1] = 1
-#myB.board[2][2] = 1
-#myB.board[3][3] = -1
-#myB.board[4][2] = -1
-#myB.board[2][4] = -1
-#myB.board[1][5] = -1
-#myB.printBoard()
-#print(myB.findState())
