@@ -46,7 +46,7 @@ class Gui:
                          [[(710, 50), 30], [(710, 50+ 50+self.circSep), 30], [(710, 50+ 2*(50+self.circSep)), 30], [(710, 50+ 3*(50+self.circSep)), 30], [(710, 50+ 4*(50+self.circSep)), 30], [(710, 50+ 5*(50+self.circSep)), 30] ]
                          ]
         self.visited = [[0 for i in range(numRows)] for j in range(numColumns)]  
-       # self.circleList
+      
     def resetScreen(self):
         self.visited =  [[0 for i in range(numRows)] for j in range(numColumns)]  
     def draw(self):
@@ -54,12 +54,7 @@ class Gui:
             pygame.draw.rect(self.screen, blue, rectangle)
         for j in range(numColumns):
             for i in range(numRows):
-                #if pygame.mouse.get_pressed()[0]:
-                   # if pygame.mouse.get_pos()[0] <= self.rectWidth:
-                  #      pygame.draw.circle(self.screen, yellow, self.circList[0][-1][0], self.circList[0][-1][1])
-                 #   elif pygame.mouse.get_pos()[0] >= 10+self.rectWidth and pygame.mouse.get_pos()[0] <= 10+self.rectWidth +self.rectWidth:
-                #        pygame.draw.circle(self.screen, yellow, self.circList[1][-1][0], self.circList[1][-1][1])
-               # else:
+            
                 if self.visited[j][i] == 0:
                     pygame.draw.circle(self.screen, white, self.circList[j][i][0], self.circList[j][i][1])
                 elif self.visited[j][i] == 1:
@@ -74,10 +69,10 @@ class Gui:
                 if event.type == pygame.QUIT:
                     done = True  
                 elif event.type == pygame.MOUSEBUTTONDOWN:
-                    #if pygame.mouse.get_pressed()[0]:
+                   
                         legalMoves = self.board.getLegalMoves()
                         if pygame.mouse.get_pos()[0] <= self.rectWidth:
-                            #pygame.draw.circle(self.screen, yellow, self.circList[0][-1][0], self.circList[0][-1][1])
+                           
                             #check is this column is a legal move
                             for legalMove in legalMoves:
                                 if legalMove[1] == 0:
@@ -88,52 +83,47 @@ class Gui:
                         
                             
                         elif pygame.mouse.get_pos()[0] >= 10+self.rectWidth and pygame.mouse.get_pos()[0] <= 10+self.rectWidth +self.rectWidth:
-                        # pygame.draw.circle(self.screen, yellow, self.circList[1][-1][0], self.circList[1][-1][1])
+                        
                             for legalMove in legalMoves:
                                 if legalMove[1] == 1:
                                     self.visited[1][legalMove[0]] = 1
                                     return [legalMove[0], 1]
                                     #break
-                            #self.visited[1][-1] = 1
+                            
                         elif pygame.mouse.get_pos()[0] >= 2*(10+self.rectWidth) and pygame.mouse.get_pos()[0] <= 2*(10+self.rectWidth) +self.rectWidth:
                             for legalMove in legalMoves:
                                 if legalMove[1] == 2:
                                     self.visited[2][legalMove[0]] = 1
                                     return [legalMove[0], 2]
                                     #break
-                            #self.visited[2][-1] = 1
+                            
                         elif pygame.mouse.get_pos()[0] >= 3*(10+self.rectWidth) and pygame.mouse.get_pos()[0] <= 3*(10+self.rectWidth) +self.rectWidth:
                             for legalMove in legalMoves:
                                 if legalMove[1] == 3:
                                     self.visited[3][legalMove[0]] = 1
                                     return [legalMove[0], 3]
                                     #break
-                            #self.visited[3][-1] = 1
+                           
                         elif pygame.mouse.get_pos()[0] >= 4*(10+self.rectWidth) and pygame.mouse.get_pos()[0] <= 4*(10+self.rectWidth) +self.rectWidth:
                             for legalMove in legalMoves:
                                 if legalMove[1] == 4:
                                     self.visited[4][legalMove[0]] = 1
                                     return [legalMove[0], 4]
                                     #break
-                            #self.visited[4][-1] = 1
+                            
                         elif pygame.mouse.get_pos()[0] >= 5*(10+self.rectWidth) and pygame.mouse.get_pos()[0] <= 5*(10+self.rectWidth) +self.rectWidth:
                             for legalMove in legalMoves:
                                 if legalMove[1] == 5:
                                     self.visited[5][legalMove[0]] = 1
                                     return [legalMove[0], 5]
                                     #break
-                        # self.visited[5][-1] = 1
+                        
                         elif pygame.mouse.get_pos()[0] >= 6*(10+self.rectWidth) and pygame.mouse.get_pos()[0] <= 6*(10+self.rectWidth) +self.rectWidth:
                             for legalMove in legalMoves:
                                 if legalMove[1] == 6:
                                     self.visited[6][legalMove[0]] = 1
                                     return [legalMove[0], 6]
-        #else:
-         #   self.mouseAction()
-                        #break
-                #self.visited[6][-1] = 1
-   # def computerMove(playerNeural): #needs the neural net play as input -> probably will need to add this on to the main looping function later on
-    #    return playerNeural.getMove(self.board.getLegalMoves(), self.board, self)
+       
     def redWins(self):
         font = pygame.font.Font('freesansbold.ttf', 32)
         text = font.render('Red Wins!', True, red, blue)
@@ -158,53 +148,27 @@ class Gui:
         textRect = text.get_rect()
         textRect.center = (800 // 2, 300 // 2)
         self.screen.blit(text, textRect)  
-        #self.draw()
+       
         
-       # done = False
-        #while not done:
-           # print("in loop")
+      
         for event in pygame.event.get():
-           # print("in forrrrrrrrrrrrrrrr")
+          
             if event.type == pygame.QUIT:
-                #print("in quit")
+               
 
                 pygame.quit()
                 quit()  
             elif event.type == pygame.KEYDOWN:
-                #print("in keyyyyyyyyyyyyyyyyyyyyyyyy")
+               
                 if event.key == pygame.K_SPACE:
-                    #print("in spaceeeeeeeeeeeeeeeeeeeeeeeee")
-                    #done = True
+                    
                     self.board.resetBoard()
                     self.resetScreen()
                     return 0
                         
-                        #gameOver = False
+                        
         
 
-#code to test GUI
-'''
-pygame.init()
 
-
-#gui = Gui()
-#gameDisplay = pygame.display.set_mode((800,600))
-#gameDisplay.fill((173,216,230))
-board = Board()
-myGui = Gui(board)
-while True:
-    for event in pygame.event.get():
-       if event.type == pygame.QUIT:
-            pygame.quit()
-            quit()
-    myGui.draw()
-  
-       # myGui.mouseAction()
-       # pygame.display.update()
-    #pixAr = pygame.PixelArray(gameDisplay)
-    #pixAr[10][20] = red
-
-    pygame.display.update()
-'''
 
 
