@@ -12,7 +12,7 @@ class Player:
     def getMove(self, legalMoves, board, gui):#addition of GUI input to let user pick a move
         if self.strategy == "random":
             return legalMoves[random.randrange(0, len(legalMoves))]
-        #nw option to let player play
+        #new option to let player play
         elif self.strategy== "picked":
             
             return gui.mouseAction()
@@ -35,4 +35,3 @@ class Player:
     def getPlayer(self):
         return self.value
 
-print("working")
