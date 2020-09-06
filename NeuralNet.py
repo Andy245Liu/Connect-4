@@ -2,7 +2,7 @@ import numpy as np
 from keras.layers import Dense
 from keras.models import Sequential
 from keras.utils import to_categorical
-#import pandas as pd
+
 class Model:
     def __init__(self, numberOfInputs, numberOfOutputs, batchSize, epochs):
         self.numberOfInputs = numberOfInputs
@@ -31,4 +31,3 @@ class Model:
         self.model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=self.epochs, batch_size=self.batchSize)
     def predict(self, data, index):
         return self.model.predict(np.array(data).reshape(-1, self.numberOfInputs))[0][index]
-#print("neuralnet check")
